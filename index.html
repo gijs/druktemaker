@@ -1,0 +1,276 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Druk druk!</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<style>
+		/*
+		 * Globals
+		 */
+
+		/* Links */
+		a,
+		a:focus,
+		a:hover {
+		  color: #fff;
+		}
+
+		/* Custom default button */
+		.btn-default,
+		.btn-default:hover,
+		.btn-default:focus {
+		  color: #333;
+		  text-shadow: none; /* Prevent inheritence from `body` */
+		  background-color: #fff;
+		  border: 1px solid #fff;
+		}
+
+
+		/*
+		 * Base structure
+		 */
+
+		html,
+		body {
+		  height: 100%;
+		  background-color: #333;
+		}
+		body {
+		  color: #fff;
+		  text-align: center;
+		  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+		}
+
+		/* Extra markup and styles for table-esque vertical and horizontal centering */
+		.site-wrapper {
+		  display: table;
+		  width: 100%;
+		  height: 100%; /* For at least Firefox */
+		  min-height: 100%;
+		  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+		          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+		}
+		.site-wrapper-inner {
+		  display: table-cell;
+		  vertical-align: top;
+		}
+		.cover-container {
+		  margin-right: auto;
+		  margin-left: auto;
+		}
+
+		/* Padding for spacing */
+		.inner {
+		  padding: 30px;
+		}
+
+
+		/*
+		 * Header
+		 */
+		.masthead-brand {
+		  margin-top: 10px;
+		  margin-bottom: 10px;
+		}
+
+		.masthead-nav > li {
+		  display: inline-block;
+		}
+		.masthead-nav > li + li {
+		  margin-left: 20px;
+		}
+		.masthead-nav > li > a {
+		  padding-right: 0;
+		  padding-left: 0;
+		  font-size: 16px;
+		  font-weight: bold;
+		  color: #fff; /* IE8 proofing */
+		  color: rgba(255,255,255,.75);
+		  border-bottom: 2px solid transparent;
+		}
+		.masthead-nav > li > a:hover,
+		.masthead-nav > li > a:focus {
+		  background-color: transparent;
+		  border-bottom-color: #a9a9a9;
+		  border-bottom-color: rgba(255,255,255,.25);
+		}
+		.masthead-nav > .active > a,
+		.masthead-nav > .active > a:hover,
+		.masthead-nav > .active > a:focus {
+		  color: #fff;
+		  border-bottom-color: #fff;
+		}
+
+		@media (min-width: 768px) {
+		  .masthead-brand {
+		    float: left;
+		  }
+		  .masthead-nav {
+		    float: right;
+		  }
+		}
+
+
+		/*
+		 * Cover
+		 */
+
+		.cover {
+		  padding: 0 20px;
+		}
+		.cover .btn-lg {
+		  padding: 10px 20px;
+		  font-weight: bold;
+		}
+
+
+		/*
+		 * Footer
+		 */
+
+		.mastfoot {
+		  color: #999; /* IE8 proofing */
+		  color: rgba(255,255,255,.5);
+		}
+
+
+		/*
+		 * Affix and center
+		 */
+
+		@media (min-width: 768px) {
+		  /* Pull out the header and footer */
+		  .masthead {
+		    position: fixed;
+		    top: 0;
+		  }
+		  .mastfoot {
+		    position: fixed;
+		    bottom: 0;
+		  }
+		  /* Start the vertical centering */
+		  .site-wrapper-inner {
+		    vertical-align: middle;
+		  }
+		  /* Handle the widths */
+		  .masthead,
+		  .mastfoot,
+		  .cover-container {
+		    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+		  }
+		}
+
+		@media (min-width: 992px) {
+		  .masthead,
+		  .mastfoot,
+		  .cover-container {
+		    width: 700px;
+		  }
+		}	
+	</style>
+
+</head>
+<body>
+	
+	
+  <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+            </div>
+          </div>
+
+          <div class="inner cover">
+            <h1 class="cover-heading">Druk hier?</h1>
+            <p class="lead">Drukte in de trein waar je nu in staat?</p>
+            <p class="lead">
+              <a style="cursor:pointer;" onclick="geoFindMe()" class="btn btn-lg btn-default">Druk op deze knop</a>
+            </p>
+            <p id="out"></p>
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+
+	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>	
+	<script>
+		function geoFindMe() {
+		  var output = document.getElementById("out");
+
+		  if (!navigator.geolocation){
+		    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+		    return;
+		  }
+
+		  function success(position) {
+		    var latitude  = position.coords.latitude;
+		    var longitude = position.coords.longitude;
+
+			var point = {
+			  "type": "Feature",
+			  "properties": {
+			    "marker-color": "#0f0"
+			  },
+			  "geometry": {
+			    "type": "Point",
+			    "coordinates": [longitude, latitude]
+			  }
+			};
+
+		    output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+
+		    var img = new Image();
+		    img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+
+		    output.appendChild(img);
+
+			$.ajax({
+			dataType: "json",
+			url: "stations.geojson",
+			success: function(data) {
+				// console.log('data', data);
+				var nearest = turf.nearest(point, data);
+				console.log('nearest', nearest);
+
+			}
+			}).error(function() {});
+
+
+		  };
+
+		  function error() {
+		    output.innerHTML = "Unable to retrieve your location";
+		  };
+
+		  output.innerHTML = "<p>Locating…</p>";
+
+		  navigator.geolocation.getCurrentPosition(success, error);
+		}
+
+	
+	</script>
+</body>
+</html>
