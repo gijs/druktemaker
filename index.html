@@ -194,6 +194,7 @@
             <p class="lead">
               <a style="cursor:pointer;" onclick="geoFindMe()" class="btn btn-lg btn-default">Druk op deze knop</a>
             </p>
+            <p id="status"></p>
             <p id="out"></p>
           </div>
 
@@ -223,6 +224,7 @@
 
 		function geoFindMe() {
 		  var output = document.getElementById("out");
+		  var status = document.getElementById("status");
 
 		  if (!navigator.geolocation){
 		    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
@@ -285,11 +287,11 @@
 						url: '/api/v1/drukte/',
 						success: function(data) {
 							console.log('success', data);
-							output.innerHTML = '<p>Melding gemaakt!</p>';
+							status.innerHTML = '<p>Melding gemaakt!</p>';
 						},
 						failure: function(msg) {
 							console.log('error', msg);
-							output.innerHTML = '<p>Mislukt! Misschien is de Druktemelder API inmiddels veranderd of er is iets anders loos... Probeer het anders via de NS App, je hebt toch alle tijd :)</p>';
+							status.innerHTML = '<p>Mislukt! Misschien is de Druktemelder API inmiddels veranderd of er is iets anders loos... Probeer het anders via de NS App, je hebt toch alle tijd :)</p>';
 						}
 					});
 					
