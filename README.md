@@ -1,5 +1,5 @@
-Drukdruk!
-=========
+Druktemaker
+===========
 
 A quick mashup that allows a one-button congestion report about the current train.
 
@@ -9,7 +9,7 @@ Note: Works only in the Netherlands.
 Prototype
 ---------
 
-[Drukdruk!](http://druktemaker.herokuapp.com/)
+[druktemaker.herokuapp.com](http://druktemaker.herokuapp.com/)
 
 
 Why?
