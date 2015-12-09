@@ -208,9 +208,6 @@
 
     </div>
 
-
-
-
 	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js"></script>
@@ -255,24 +252,56 @@
 		    output.appendChild(img);
 
 			$.ajax({
-			dataType: "json",
-			url: "stations.geojson",
-			success: function(data) {
-				// console.log('data', data);
-				var nearest = turf.nearest(point, data);
-				console.log('nearest', nearest);
+				dataType: "json",
+				url: "data/stations.geojson",
+				success: function(stations) {
+					var nearest = turf.nearest(point, stations);
+					for (var i = 0; i < stations.features.length; i++)
+					    if (stations.features[i].properties.ID === nearest.properties.ID) { 
+					        stations.features.splice(i, 1);
+					        break;
+					    }
+					var secondnearest = turf.nearest(point, stations);
+					console.log('First nearest', nearest.properties);
+					console.log('Second nearest', secondnearest.properties);
 
-			}
+					var d = new Date();
+					var date = d.toISOString().slice(0,10); // "2014-05-12"
+					var data = {
+					   "couldSit": false,
+					   "date": date,
+					   "happiness": "ANGRY",
+					   "secondClass": true,
+					   "serviceId": 841,
+					   "stationFrom": nearest.NAAM,
+					   "stationTo": secondnearest.NAAM
+					}
+
+					$.ajax({
+						type: 'POST',
+						dataType: 'json',
+						data: JSON.stringify(data),
+						contentType: "application/json; charset=utf-8",
+						url: '/api/v1/drukte/',
+						success: function(data) {
+							console.log('success', data);
+							output.innerHTML = '<p>Melding gemaakt!</p>';
+						},
+						failure: function(msg) {
+							console.log('error', msg);
+							output.innerHTML = '<p>Mislukt! Misschien is de Druktemelder API inmiddels veranderd of er is iets anders loos... Probeer het anders via de NS App, je hebt toch alle tijd :)</p>';
+						}
+					});
+					
+				}
 			}).error(function() {});
-
-
 		  };
 
 		  function error() {
 		    output.innerHTML = "Unable to retrieve your location";
 		  };
 
-		  output.innerHTML = "<p>Locating…</p>";
+		  output.innerHTML = "<p>Locating...</p>";
 
 		  navigator.geolocation.getCurrentPosition(success, error);
 		}
