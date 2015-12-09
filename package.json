@@ -1,0 +1,20 @@
+{
+  "name": "drukdruk",
+  "private": true,
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
+  "author": "Gijs Nijholt <gijs.nijholt@gmail.com>",
+  "scripts": {
+    "build": "webpack"
+  },
+  "dependencies": {
+    "ejs": "2.3.3",
+    "express": "4.13.3",
+    "body-parser": "",
+    "request": "",
+    "unirest": ""
+  },
+  "devDependencies": {
+  }
+}
