@@ -9,7 +9,7 @@ Note: Works only in the Netherlands.
 Prototype
 ---------
 
-[Drukdruk!](http://gijs.github.io/drukdruk/)
+[Drukdruk!](http://druktemaker.herokuapp.com/)
 
 
 Why?
