@@ -29,6 +29,7 @@ So this is my little peaceful demonstration: A big button that reports / complai
 Links to articles about NS failing (in Dutch)
 ---------------------------------------------
 
+ - [http://nos.nl/artikel/2074214-7500-treinreizigers-klagen-de-ns-aan-voor-overvolle-treinen.html](http://nos.nl/artikel/2074214-7500-treinreizigers-klagen-de-ns-aan-voor-overvolle-treinen.html)
  - [http://nos.nl/artikel/2072287-ns-wacht-claim-van-reizigers-die-niet-kunnen-zitten.html](http://nos.nl/artikel/2072287-ns-wacht-claim-van-reizigers-die-niet-kunnen-zitten.html)
  - [http://nos.nl/artikel/2073405-dijksma-wil-voor-kerstmis-ns-plan-tegen-treinentekort.html](http://nos.nl/artikel/2073405-dijksma-wil-voor-kerstmis-ns-plan-tegen-treinentekort.html)
  - [http://nos.nl/video/2073416-dijksma-voor-kerst-moet-de-ns-een-plan-hebben.html](http://nos.nl/video/2073416-dijksma-voor-kerst-moet-de-ns-een-plan-hebben.html)
